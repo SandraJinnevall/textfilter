@@ -8,7 +8,7 @@ Anax TextFilter
 [![Build Status](https://scrutinizer-ci.com/g/canax/textfilter/badges/build.png?b=master)](https://scrutinizer-ci.com/g/canax/textfilter/build-status/master)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/canax/textfilter/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/canax/textfilter/?branch=master)
 [![Code Coverage](https://scrutinizer-ci.com/g/canax/textfilter/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/canax/textfilter/?branch=master)
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/d831fd4c-b7c6-4ff0-9a83-102440af8929/mini.png)](https://insight.sensiolabs.com/projects/d831fd4c-b7c6-4ff0-9a83-102440af8929)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/f60cf588-0d0e-4794-b156-5c2bcbc75c3a/mini.png)](https://insight.sensiolabs.com/projects/f60cf588-0d0e-4794-b156-5c2bcbc75c3a)
 
 Anax TextFilter module.
 
