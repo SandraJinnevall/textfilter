@@ -1,12 +1,12 @@
 <?php
 
-namespace Mos\TextFilter;
+namespace Anax\TextFilter;
 
 /**
  * A testclass
  *
  */
-class CTextFilterTest extends \PHPUnit_Framework_TestCase
+class TextFilterTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * Supported filters.
@@ -32,7 +32,7 @@ class CTextFilterTest extends \PHPUnit_Framework_TestCase
       */
     public function testMore()
     {
-        $filter = new CTextFilter();
+        $filter = new TextFilter();
 
         $text = "";
         $exp  = "";
@@ -62,7 +62,7 @@ class CTextFilterTest extends \PHPUnit_Framework_TestCase
      */
     public function testStop()
     {
-        $filter = new CTextFilter();
+        $filter = new TextFilter();
 
         $text = "";
         $exp  = "";
@@ -87,7 +87,7 @@ class CTextFilterTest extends \PHPUnit_Framework_TestCase
 /*
     public function testSyntaxHighlightGeshiMethod()
     {
-        $filter = new CTextFilter();
+        $filter = new TextFilter();
 
         $text = "";
         $exp  = '<pre class="text geshi"></pre>';
@@ -124,7 +124,7 @@ EOD;
 /*
     public function testSyntaxHighlightGeshiShortCode()
     {
-        $filter = new CTextFilter();
+        $filter = new TextFilter();
 
         $text = <<<'EOD'
 ```text
@@ -188,7 +188,7 @@ EOD;
 /*
     public function testSyntaxHighlightHlJsiShortCode()
     {
-        $filter = new CTextFilter();
+        $filter = new TextFilter();
 
         $text = <<<'EOD'
 ```text
@@ -250,7 +250,7 @@ EOD;
       */
     public function testTitleFromFirstH1()
     {
-        $filter = new CTextFilter();
+        $filter = new TextFilter();
 
         $text = "";
         $res = $filter->parse($text, ["titlefromh1"]);
@@ -324,7 +324,6 @@ EOD;
         $res = $filter->parse($text, ["jsonfrontmatter", "markdown", "titlefromh1"]);
         $title = $res->frontmatter["title"];
         $this->assertEquals($exp, $title, "Title missmatch");
-
     }
 
 
@@ -338,7 +337,7 @@ EOD;
       */
     public function testJsonFrontMatterException()
     {
-        $filter = new CTextFilter();
+        $filter = new TextFilter();
 
         $text = <<<EOD
 {{{
@@ -357,7 +356,7 @@ EOD;
       */
     public function testJsonFrontMatter()
     {
-        $filter = new CTextFilter();
+        $filter = new TextFilter();
 
         $text = "";
         $res = $filter->parse($text, ["jsonfrontmatter"]);
@@ -408,7 +407,7 @@ EOD;
             return;
         }
 
-        $filter = new CTextFilter();
+        $filter = new TextFilter();
 
         $text = <<<EOD
 ---
@@ -431,7 +430,7 @@ EOD;
             return;
         }
 
-        $filter = new CTextFilter();
+        $filter = new TextFilter();
 
         $text = "";
         $res = $filter->parse($text, ["yamlfrontmatter"]);
@@ -515,7 +514,7 @@ EOD;
      */
     public function testGetFilters()
     {
-        $filter = new CTextFilter();
+        $filter = new TextFilter();
 
         $filters = $filter->getFilters();
         $res = array_diff($this->standardFilters, $filters);
@@ -532,7 +531,7 @@ EOD;
      */
     public function testHasFilter()
     {
-        $filter = new CTextFilter();
+        $filter = new TextFilter();
 
         $res = $filter->hasFilter("markdown");
         $this->assertTrue($res, "Missmatch has filters.");
@@ -550,7 +549,7 @@ EOD;
      */
     public function testHasFilterException()
     {
-        $filter = new CTextFilter();
+        $filter = new TextFilter();
 
         $filter->hasFilter("NOT EXISTING");
     }
@@ -565,7 +564,7 @@ EOD;
      */
     public function testPurifier()
     {
-        $filter = new CTextFilter();
+        $filter = new TextFilter();
 
         $text = "Header\n=========";
         $exp  = "<h1>Header</h1>\n";
@@ -582,7 +581,7 @@ EOD;
      */
     public function testMarkdown()
     {
-        $filter = new CTextFilter();
+        $filter = new TextFilter();
 
         $html = "Header\n=========";
         $exp  = "<h1>Header</h1>\n";
@@ -599,7 +598,7 @@ EOD;
      */
     public function testSmartyPants()
     {
-        $filter = new CTextFilter();
+        $filter = new TextFilter();
 
         $html = "...";
         $exp  = "<p>&#8230;</p>\n";
@@ -616,7 +615,7 @@ EOD;
      */
     public function testMarkdownAndBBCode()
     {
-        $filter = new CTextFilter();
+        $filter = new TextFilter();
 
         $html = "Header[b]text[/b]\n=========";
         $exp  = "<h1>Header<strong>text</strong></h1>\n";
@@ -633,7 +632,7 @@ EOD;
      */
     public function testMarkdownAndBBCodeAsArray()
     {
-        $filter = new CTextFilter();
+        $filter = new TextFilter();
 
         $html = "Header[b]text[/b]\n=========";
         $exp  = "<h1>Header<strong>text</strong></h1>\n";
@@ -650,7 +649,7 @@ EOD;
      */
     public function testMarkdownArray()
     {
-        $filter = new CTextFilter();
+        $filter = new TextFilter();
 
         $html = "Header\n=========";
         $exp  = "<h1>Header</h1>\n";
@@ -667,7 +666,7 @@ EOD;
      */
     public function testUppercase()
     {
-        $filter = new CTextFilter();
+        $filter = new TextFilter();
 
         $html = "Header\n=========";
         $exp  = "<h1>Header</h1>\n";
@@ -684,7 +683,7 @@ EOD;
      */
     public function testBBCode()
     {
-        $filter = new CTextFilter();
+        $filter = new TextFilter();
 
         $html = "[b]text[/b]";
         $exp  = "<strong>text</strong>";
@@ -701,7 +700,7 @@ EOD;
      */
     public function testClickable()
     {
-        $filter = new CTextFilter();
+        $filter = new TextFilter();
 
         $html = "http://example.com/humans.txt";
         $exp  = "<a href='$html'>$html</a>";
@@ -718,7 +717,7 @@ EOD;
      */
     public function testNl2Br()
     {
-        $filter = new CTextFilter();
+        $filter = new TextFilter();
 
         $html = "hej\nhej";
         $exp  = "hej<br />\nhej";
@@ -735,7 +734,7 @@ EOD;
      */
     public function testShortCodeFigure()
     {
-        $filter = new CTextFilter();
+        $filter = new TextFilter();
 
         $src = "/img/me.png";
         $caption = "This is me.";
@@ -765,7 +764,7 @@ EOD;
      */
     public function testDoItException()
     {
-        $filter = new CTextFilter();
+        $filter = new TextFilter();
         $filter->doFilter("void", "no-such-filter");
     }
 }

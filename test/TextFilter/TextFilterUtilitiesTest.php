@@ -1,12 +1,12 @@
 <?php
 
-namespace Mos\TextFilter;
+namespace Anax\TextFilter;
 
 /**
  * A testclass
  *
  */
-class CTextFilterUtilitiesTest extends \PHPUnit_Framework_TestCase
+class TextFilterUtilitiesTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * Provider for TextWithLinks
@@ -42,7 +42,7 @@ class CTextFilterUtilitiesTest extends \PHPUnit_Framework_TestCase
       */
     public function testAddBaseurlToRelativeLinks($baseurl, $text, $exp)
     {
-        $filter = new CTextFilter();
+        $filter = new TextFilter();
 
         $callback = function ($url, $baseurl) {
             return rtrim("$baseurl/$url", "/");

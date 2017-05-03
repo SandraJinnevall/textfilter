@@ -1,6 +1,6 @@
 <?php
 
-namespace Mos\TextFilter;
+namespace Anax\TextFilter;
 
 /**
  * Utilities when working with text.

@@ -1,6 +1,7 @@
 <?php
-include(__DIR__.'/../vendor/autoload.php');
+require __DIR__ . "/config.php";
 
+use \Anax\TextFilter\TextFilter;
 
 // Prepare the content
 $text = <<<'EOD'
@@ -168,7 +169,7 @@ EOD;
 
 
 // Filter the content
-$filter = new \Mos\TextFilter\CTextFilter();
+$filter = new TextFilter();
 $document = $filter->parse($text, ["shortcode", "markdown", "clickable", "bbcode"]);
 ?>
 
@@ -176,5 +177,5 @@ $document = $filter->parse($text, ["shortcode", "markdown", "clickable", "bbcode
 <meta charset="utf-8">
 <!-- <link rel="stylesheet" href="css/geshi.css"> -->
 <link rel="stylesheet" href="css/default.css">
-<title>Example on Mos\TextFilter</title>
+<title>Example on TextFilter</title>
 <?=$document->text?>

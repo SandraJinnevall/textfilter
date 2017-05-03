@@ -1,6 +1,7 @@
 <?php
-include(__DIR__.'/../vendor/autoload.php');
+require __DIR__ . "/config.php";
 
+use \Anax\TextFilter\TextFilter;
 
 // Prepare the content
 $text = <<<EOD
@@ -22,7 +23,7 @@ EOD;
 
 
 // Filter the content
-$filter = new \Mos\TextFilter\CTextFilter();
+$filter = new TextFilter();
 $page = $filter->parse($text, ["jsonfrontmatter", "markdown"]);
 ?>
 
@@ -37,5 +38,5 @@ th {
     text-align: left;
 }
 </style>
-<title>Example on Mos\TextFilter</title>
+<title>Example on TextFilter</title>
 <?= $page->text ?>

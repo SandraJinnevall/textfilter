@@ -1,12 +1,12 @@
 <?php
 
-namespace Mos\TextFilter;
+namespace Anax\TextFilter;
 
 /**
  * Filter and format content.
  *
  */
-class CTextFilter
+class TextFilter
 {
     use TTextUtilities,
         TShortcode;

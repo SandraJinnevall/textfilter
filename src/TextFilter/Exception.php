@@ -1,6 +1,6 @@
 <?php
 
-namespace Mos\TextFilter;
+namespace Anax\TextFilter;
 
 /**
  * Anax base class for wrapping sessions.

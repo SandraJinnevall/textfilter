@@ -1,6 +1,6 @@
 <?php
 
-namespace Mos\TextFilter;
+namespace Anax\TextFilter;
 
 /**
  * Shortcode to format when working with text.

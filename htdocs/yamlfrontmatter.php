@@ -1,6 +1,7 @@
 <?php
-include(__DIR__.'/../vendor/autoload.php');
+require __DIR__ . "/config.php";
 
+use \Anax\TextFilter\TextFilter;
 
 // Prepare the content
 $text = <<<EOD
@@ -23,13 +24,13 @@ EOD;
 
 
 // Filter the content
-$filter = new \Mos\TextFilter\CTextFilter();
+$filter = new TextFilter();
 $page = $filter->parse($text, ["yamlfrontmatter", "markdown"]);
 ?>
 
 <!doctype html>
 <meta charset="utf-8">
-<title>Example on Mos\TextFilter</title>
+<title>Example on TextFilter</title>
 <pre><?php var_dump($page->frontmatter) ?></pre>
 <hr>
 <?= $page->text ?>
