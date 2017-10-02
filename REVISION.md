@@ -2,6 +2,12 @@ Revision history
 =================================
 
 
+v1.0.2 (2017-10-02)
+-----------------------------------
+
+* Add options to shortcode [YOUTUBE] for playlist, time, id and class.
+
+
 v1.0.1 (2017-08-03)
 ---------------------------------
 
