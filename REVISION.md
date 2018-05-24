@@ -3,7 +3,7 @@ Revision history
 
 
 
-v1.1.x (2018-05-24)
+v1.1.0 (2018-05-24)
 -----------------------------------
 
 * Upgrade to circleci v2.
@@ -14,6 +14,9 @@ v1.1.x (2018-05-24)
 * Update composer to >=PHP7.0.
 * Use semantic versioning in composer.json for dependencies and allow low version och packages.
 * Upgrade phpunit testclass to support newer version of phpunit.
+* Add info on semantic versioning in README.
+* Add badge for codacy.
+* Add badge for codeclimate.
 
 
 
