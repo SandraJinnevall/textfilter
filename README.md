@@ -23,5 +23,5 @@ This software carries a MIT license.
 
 ```
  .  
-..:  Copyright (c) 2013 - 2017 Mikael Roos, mos@dbwebb.se
+..:  Copyright (c) 2013 - 2018 Mikael Roos, mos@dbwebb.se
 ```
