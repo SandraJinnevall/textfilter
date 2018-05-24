@@ -9,6 +9,7 @@ v1.1.x (2018-05-24)
 * Upgrade to circleci v2.
 * Upgrade Makefile with docker.
 * Remove docker.lock.
+* Use vendor/phpunit in scrutinizer.
 
 
 
