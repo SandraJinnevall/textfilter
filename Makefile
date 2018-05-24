@@ -173,11 +173,29 @@ check-tools-php:
 
 
 
-# target: phpunit            - Run unit tests for PHP.
+# target: phpunit            - Run unit tests for PHP (supports FILTER arg).
 .PHONY: phpunit
 phpunit: prepare
 	@$(call HELPTEXT,$@)
+ifeq ($(FILTER),)
 	[ ! -d "test" ] || $(PHPUNIT) --configuration .phpunit.xml
+else
+	[ ! -d "test" ] || $(PHPUNIT) --configuration .phpunit.xml --filter $(FILTER)
+endif
+
+
+
+# target: phpunit-docker     - Run unit tests in Docker (latest or SERVICE arg).
+.PHONY: phpunit-docker
+phpunit-docker: prepare
+	@$(call HELPTEXT,$@)
+ifeq ($(SERVICE),)
+	docker-compose --file .docker/docker-compose_test.yml run php71 $(MAKE) phpunit
+	docker-compose --file .docker/docker-compose_test.yml run php70 $(MAKE) phpunit
+	docker-compose --file .docker/docker-compose_test.yml run php56 $(MAKE) phpunit
+else
+	docker-compose --file .docker/docker-compose_test.yml run $(SERVICE) $(MAKE) phpunit
+endif
 
 
 
