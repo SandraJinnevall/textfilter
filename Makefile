@@ -144,6 +144,14 @@ install: prepare install-tools-php install-tools-bash
 
 
 
+# target: install-lowest          - Install lowest version of deoendencies
+.PHONY:  install-lowest
+install-lowest:
+	@$(call HELPTEXT,$@)
+	composer update --no-dev --prefer-lowest
+
+
+
 # target: update                  - Update the codebase and tools.
 .PHONY:  update
 update:

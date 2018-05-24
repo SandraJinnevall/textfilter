@@ -22,10 +22,10 @@
         }
     },
     "require": {
-        "php": ">=5.6",
-        "michelf/php-markdown": "1.6.*",
-        "michelf/php-smartypants": "1.6.*",
-        "ezyang/htmlpurifier": "4.*",
+        "php": ">=7.0",
+        "michelf/php-markdown": "^1.6",
+        "michelf/php-smartypants": "^1.6",
+        "ezyang/htmlpurifier": "^4.0",
         "scrivo/highlight.php": "^9.0"
     },
     "suggest": {

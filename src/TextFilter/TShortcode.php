@@ -464,7 +464,7 @@ allowfullscreen></iframe>
 </figure>
 EOD;
       break;
-      
+
       case 'syntax=': return CTextFilter::SyntaxHighlightGeSHi($matches[3], $matches[2]); break;
       case '```': return CTextFilter::SyntaxHighlightGeSHi($matches[3], $matches[2]); break;
       //case 'syntax=': return "<pre>" . highlight_string($matches[3], true) . "</pre>"; break;

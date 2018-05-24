@@ -272,11 +272,10 @@ trait TTextUtilities
 
       return $excerpt;
     }
-    
-    
+
     /**
      * Returns the first paragraph ot the text.
-     * 
+     *
      * @return string as the first paragraph.
      */
 /*    public function GetFirstParagraph() {
