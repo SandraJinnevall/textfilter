@@ -11,6 +11,9 @@ v1.1.x (2018-05-24)
 * Remove docker.lock.
 * Use vendor/phpunit in scrutinizer.
 * Move travis to 7.0 and above.
+* Update composer to >=PHP7.0.
+* Use semantic versioning in composer.json for dependencies and allow low version och packages.
+* Upgrade phpunit testclass to support newer version of phpunit.
 
 
 
