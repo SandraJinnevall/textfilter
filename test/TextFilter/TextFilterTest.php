@@ -2,11 +2,13 @@
 
 namespace Anax\TextFilter;
 
+use \PHPUnit\Framework\TestCase;
+
 /**
  * A testclass
  *
  */
-class TextFilterTest extends \PHPUnit_Framework_TestCase
+class TextFilterTest extends TestCase
 {
     /**
      * Supported filters.
