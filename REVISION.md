@@ -10,7 +10,7 @@ v1.1.x (2018-05-24)
 * Upgrade Makefile with docker.
 * Remove docker.lock.
 * Use vendor/phpunit in scrutinizer.
-
+* Move travis to 7.0 and above.
 
 
 
