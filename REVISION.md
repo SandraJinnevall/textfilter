@@ -3,6 +3,15 @@ Revision history
 
 
 
+v1.2.0 (2018-07-31)
+-----------------------------------
+
+* Add filters for frontmatter YAML, JSON and support include of files together with variable expressions.
+* Adding filters "frontmatter", "variable" to support above.
+* Marking older filters "jsonfrontmatter", "yamlfrontmatter" as obsolete for markdown parsing.
+
+
+
 v1.1.1 (2018-06-26)
 -----------------------------------
 
