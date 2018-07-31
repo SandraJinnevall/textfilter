@@ -28,6 +28,10 @@
         "ezyang/htmlpurifier": "^4.0",
         "scrivo/highlight.php": "^9.0"
     },
+    "require-dev": {
+        "symfony/yaml": "^3.4",
+        "mustangostang/spyc": "^0.6.2"
+    },
     "suggest": {
         "ext-json": "*",
         "ext-yaml": "*"

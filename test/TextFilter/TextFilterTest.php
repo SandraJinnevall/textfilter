@@ -6,78 +6,24 @@ use \PHPUnit\Framework\TestCase;
 
 /**
  * A testclass
- *
+ * @todo clean up testcases and move into separate classes
  */
 class TextFilterTest extends TestCase
 {
-    /**
-     * Supported filters.
-     */
-    private $standardFilters = [
-         'yamlfrontmatter',
-         'bbcode',
-         'clickable',
-         'markdown',
-//         'geshi',
-         'nl2br',
-         'shortcode',
-         'purify',
-         'titlefromh1',
-     ];
-
-
-
-     /**
-      * Test.
-      *
-      * @return void
-      */
-    public function testMore()
-    {
-        $filter = new TextFilter();
-
-        $text = "";
-        $exp  = "";
-        $res = $filter->parse($text, []);
-        $filter->addExcerpt($res);
-        $this->assertEquals($exp, $res->excerpt, "More did not match");
-
-        $text = "A<!--more-->B";
-        $exp  = "A";
-        $res = $filter->parse($text, []);
-        $filter->addExcerpt($res);
-        $this->assertEquals($exp, $res->excerpt, "More did not match");
-
-        $text = "A<!--stop-->B<!--more-->C";
-        $exp  = "A";
-        $res = $filter->parse($text, []);
-        $filter->addExcerpt($res);
-        $this->assertEquals($exp, $res->excerpt, "More did not match");
-    }
-
-
-
-    /**
-     * Test.
-     *
-     * @return void
-     */
-    public function testStop()
-    {
-        $filter = new TextFilter();
-
-        $text = "";
-        $exp  = "";
-        $res = $filter->parse($text, []);
-        $filter->addExcerpt($res);
-        $this->assertEquals($exp, $res->excerpt, "Stop did not match");
-
-        $text = "A<!--stop-->B";
-        $exp  = "A";
-        $res = $filter->parse($text, []);
-        $filter->addExcerpt($res);
-        $this->assertEquals($exp, $res->excerpt, "Stop did not match");
-    }
+//     /**
+//      * Supported filters.
+//      */
+//     private $standardFilters = [
+//          'yamlfrontmatter',
+//          'bbcode',
+//          'clickable',
+//          'markdown',
+// //         'geshi',
+//          'nl2br',
+//          'shortcode',
+//          'purify',
+//          'titlefromh1',
+//      ];
 
 
 
@@ -509,19 +455,19 @@ EOD;
 
 
 
-    /**
-     * Test.
-     *
-     * @return void
-     */
-    public function testGetFilters()
-    {
-        $filter = new TextFilter();
-
-        $filters = $filter->getFilters();
-        $res = array_diff($this->standardFilters, $filters);
-        $this->assertTrue(empty($res), "Missmatch standard filters.");
-    }
+    // /**
+    //  * Test.
+    //  *
+    //  * @return void
+    //  */
+    // public function testGetFilters()
+    // {
+    //     $filter = new TextFilter();
+    //
+    //     $filters = $filter->getFilters();
+    //     $res = array_diff($this->standardFilters, $filters);
+    //     $this->assertTrue(empty($res), "Missmatch standard filters.");
+    // }
 
 
 
@@ -753,20 +699,5 @@ EOD;
 EOD;
         $res = $filter->doFilter($html, "shortcode");
         $this->assertEquals($exp, $res, "shortcode failed: '$res'");
-    }
-
-
-
-    /**
-     * Test.
-     *
-     * @expectedException Exception
-     *
-     * @return void
-     */
-    public function testDoItException()
-    {
-        $filter = new TextFilter();
-        $filter->doFilter("void", "no-such-filter");
     }
 }

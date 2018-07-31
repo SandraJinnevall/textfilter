@@ -1,9 +1,9 @@
 <?php
 
-namespace Anax\TextFilter;
+namespace Anax\TextFilter\Filter;
 
 /**
- * Textfilter exceptions
+ * Filter exceptions.
  */
 class Exception extends \Exception
 {

@@ -3,8 +3,8 @@
 namespace Anax\TextFilter;
 
 /**
- * Filter and format content.
- *
+ * Extract frontmatter from text and pass text through a set of filter to
+ * format and extract information from the text.
  */
 class TextFilter
 {
@@ -17,19 +17,26 @@ class TextFilter
      * Supported filters.
      */
     private $filters = [
-        "jsonfrontmatter",
-        "yamlfrontmatter",
-        "bbcode",
-        "clickable",
-        "shortcode",
-        "markdown",
+        // Supported since 1.2
+        "frontmatter" => "Anax\TextFilter\Filter\Frontmatter",
+        "variable"    => "Anax\TextFilter\Filter\Variable",
+
+        // Supported before 1.2
+        "bbcode" => "",
+        "clickable" => "",
+        "shortcode" => "",
+        "markdown" => "",
 //        "geshi",
-        "nl2br",
-        "htmlentities",
-        "purify",
-        "titlefromh1",
-        "titlefromheader",
-        "anchor4Header",
+        "nl2br" => "",
+        "htmlentities" => "",
+        "purify" => "",
+        "titlefromh1" => "",
+        "titlefromheader" => "",
+        "anchor4Header" => "",
+
+        // @deprecated after 1.2
+        "jsonfrontmatter" => "", // @deprecated replaced with frontmatter since 1.2
+        "yamlfrontmatter" => "", // @deprecated replaced with frontmatter since 1.2
      ];
 
 
@@ -38,6 +45,13 @@ class TextFilter
       * Current document parsed.
       */
     private $current;
+
+
+
+    /**
+     * Configuration for individual filters.
+     */
+    private $config = [];
 
 
 
@@ -51,7 +65,7 @@ class TextFilter
     /**
      * Call each filter.
      *
-     * @deprecated deprecated since version 1.2 in favour of parse().
+     * @deprecated deprecated since version 1.2 mosbth/textfilter in favour of parse().
      *
      * @param string       $text    the text to filter.
      * @param string|array $filters as comma separated list of filter,
@@ -70,7 +84,7 @@ class TextFilter
             'nl2br'     => 'nl2br',
             'purify'    => 'purify',
         ];
-
+    
         // Make an array of the comma separated string $filters
         if (is_array($filters)) {
             $filter = $filters;
@@ -78,7 +92,7 @@ class TextFilter
             $filters = strtolower($filters);
             $filter = preg_replace('/\s/', '', explode(',', $filters));
         }
-
+    
         // For each filter, call its function with the $text as parameter.
         foreach ($filter as $key) {
             if (!isset($callbacks[$key])) {
@@ -86,8 +100,48 @@ class TextFilter
             }
             $text = call_user_func_array([$this, $callbacks[$key]], [$text]);
         }
-
+    
         return $text;
+    }
+
+
+
+    /**
+     * Set configuration for a certain filter.
+     *
+     * @param string $filter the label of the filter to set configuration for.
+     * @param array  $config the configuration as an array.
+     *
+     * @return void
+     */
+    public function setFilterConfig($filter, $config)
+    {
+        if (!$this->hasFilter($filter)) {
+            throw new Exception("No such filter '$filter' exists.");
+        }
+
+        $this->config[$filter] = $config;
+    }
+
+
+
+    /**
+     * Get configuration for a certain filter.
+     *
+     * @param string $filter the label of the filter to get configuration for.
+     * @param array  $config the configuration as an array.
+     *
+     * @return array the configuration as an array or empty array.
+     */
+    public function getFilterConfig($filter)
+    {
+        if (!$this->hasFilter($filter)) {
+            throw new Exception("No such filter '$filter' exists.");
+        }
+
+        return isset($this->config[$filter])
+            ? $this->config[$filter]
+            : [];
     }
 
 
@@ -129,13 +183,15 @@ class TextFilter
      */
     public function hasFilter($filter)
     {
-        return in_array($filter, $this->filters);
+        return array_key_exists($filter, $this->filters);
     }
 
 
 
     /**
      * Add array items to frontmatter.
+     *
+     * @deprecated since 1.2, replaced with filter\Frontmatter.
      *
      * @param array|null $matter key value array with items to add
      *                           or null if empty.
@@ -184,7 +240,17 @@ class TextFilter
 
         // Do the specific filter
         $text = $this->current->text;
+        $frontmatter = $this->current->frontmatter;
         switch ($filter) {
+            case "frontmatter":
+            case "variable":
+                $filterObject = new $this->filters[$filter]();
+                $config = $this->getFilterConfig("$filter");
+                $res = $filterObject->parse($text, $frontmatter, $config);
+                $this->current->text = $res["text"];
+                $this->current->frontmatter = $res["frontmatter"];
+                break;
+
             case "jsonfrontmatter":
                 $res = $this->jsonFrontMatter($text);
                 $this->current->text = $res["text"];
@@ -241,7 +307,7 @@ class TextFilter
      * @param string $text   the text to filter.
      * @param array  $filter array of filters to use.
      *
-     * @throws mos/TextFilter/Exception  when filterd does not exists.
+     * @throws Anax\TextFilter\Exception  when filter does not exists.
      *
      * @return array with the formatted text and additional details.
      */
@@ -280,6 +346,8 @@ class TextFilter
 
     /**
      * Extract front matter from text.
+     *
+     * @deprecated since 1.2, replaced with filter\Frontmatter.
      *
      * @param string $text       the text to be parsed.
      * @param string $startToken the start token.
@@ -320,6 +388,8 @@ class TextFilter
     /**
      * Extract JSON front matter from text.
      *
+     * @deprecated since 1.2, replaced with filter\Frontmatter.
+     *
      * @param string $text the text to be parsed.
      *
      * @return array with the formatted text and the front matter.
@@ -347,6 +417,8 @@ class TextFilter
     /**
      * Extract YAML front matter from text.
      *
+     * @deprecated since 1.2, replaced with filter\Frontmatter.
+     *
      * @param string $text the text to be parsed.
      *
      * @return array with the formatted text and the front matter.
@@ -370,6 +442,8 @@ class TextFilter
     /**
      * Extract YAML front matter from text, use one of several available
      * implementations of a YAML parser.
+     *
+     * @deprecated since 1.2, replaced with filter\Frontmatter.
      *
      * @param string $text the text to be parsed.
      *
