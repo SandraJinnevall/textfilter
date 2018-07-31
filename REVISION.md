@@ -9,6 +9,7 @@ v1.2.0 (2018-07-31)
 * Add filters for frontmatter YAML, JSON and support include of files together with variable expressions.
 * Adding filters "frontmatter", "variable" to support above.
 * Marking older filters "jsonfrontmatter", "yamlfrontmatter" as obsolete for markdown parsing.
+* Code structure to prepare move features to smaller standalone filter classes.
 
 
 
