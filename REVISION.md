@@ -3,10 +3,11 @@ Revision history
 
 
 
-v1.2.x (2018-07-31)
+v1.2.1 (2018-08-10)
 -----------------------------------
 
 * Remove composer.lock from repo.
+* Add config/di/textfilter.php to set up as service in di container.
 
 
 

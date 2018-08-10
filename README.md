@@ -19,17 +19,17 @@ Anax TextFilter module.
 
 
 
-License
-------------------
-
-This software carries a MIT license.
-
-
-
 Versioning
 ------------------
 
 We use [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html).
+
+
+
+License
+------------------
+
+This software carries a MIT license. See [LICENSE.txt](LICENSE.txt) for details.
 
 
 

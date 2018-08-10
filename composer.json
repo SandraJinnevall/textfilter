@@ -23,14 +23,15 @@
     },
     "require": {
         "php": ">=7.0",
+        "ezyang/htmlpurifier": "^4.0",
         "michelf/php-markdown": "^1.6",
         "michelf/php-smartypants": "^1.6",
-        "ezyang/htmlpurifier": "^4.0",
         "scrivo/highlight.php": "^9.0"
     },
     "require-dev": {
+        "mustangostang/spyc": "^0.6.2",
         "symfony/yaml": "^3.4",
-        "mustangostang/spyc": "^0.6.2"
+        "phpunit/phpunit": "^7"
     },
     "suggest": {
         "ext-json": "*",
