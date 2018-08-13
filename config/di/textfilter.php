@@ -4,7 +4,7 @@
  */
 return [
     "services" => [
-        "response" => [
+        "textfilter" => [
             "shared" => true,
             "callback" => "\Anax\TextFilter\TextFilter",
         ],
