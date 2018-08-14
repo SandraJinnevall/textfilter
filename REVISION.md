@@ -3,10 +3,10 @@ Revision history
 
 
 
-v1.2.* (2018-08-14)
+v1.2.3 (2018-08-14)
 -----------------------------------
 
-* Update di config to set inclde_base for frontmatter.
+* Update di config to set include_base for frontmatter.
 
 
 
