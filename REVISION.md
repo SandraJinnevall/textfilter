@@ -3,7 +3,14 @@ Revision history
 
 
 
-v1.2.1 (2018-08-10)
+v1.2.* (2018-08-14)
+-----------------------------------
+
+* Update di config to set inclde_base for frontmatter.
+
+
+
+v1.2.2 (2018-08-13)
 -----------------------------------
 
 * Remove composer.lock from repo.
