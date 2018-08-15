@@ -1,8 +1,8 @@
 {
     "name": "anax/textfilter",
     "type": "library",
-    "description": "Anax TextFilter module.",
-    "keywords": ["boilerplate", "framework", "mvc", "micro", "education"],
+    "description": "Anax TextFilter module, frontmatter, shortcodes, markdown.",
+    "keywords": ["anax", "textprocessing", "frontmatter", "shortcodes", "education"],
     "homepage": "https://dbwebb.se/anax",
     "license": "MIT",
     "authors": [
