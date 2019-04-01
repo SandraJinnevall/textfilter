@@ -3,6 +3,13 @@ Revision history
 
 
 
+v1.2.5 (2019-04-01)
+-----------------------------------
+
+* Fix regular expressen by adding backslash for -: preg_replace(): Compilation failed: invalid range in character class at offset 17 in src/TextFilter/TTextUtilities.php on line 144
+
+
+
 v1.2.4 (2018-08-14)
 -----------------------------------
 
